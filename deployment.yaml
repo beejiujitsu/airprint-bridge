@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: "1"
+    deployment.kubernetes.io/revision: "4"
   labels:
     app: airprint
   name: airprint
@@ -25,6 +25,8 @@ spec:
       labels:
         app: airprint
     spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
       containers:
       - image: firilith/airprint:latest
         env:
