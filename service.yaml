@@ -15,8 +15,8 @@ spec:
   - IPv4
   ipFamilyPolicy: SingleStack
   ports:
-  - nodePort: 32193
+  - nodePort: 631
     port: 631
   selector:
     app: airprint-bridge
-  type: LoadBalancer
+  type: NodePort
