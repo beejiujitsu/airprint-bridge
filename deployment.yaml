@@ -27,6 +27,9 @@ spec:
     spec:
       containers:
       - image: drpsychick/airprint-bridge:latest
+        env:
+          - name: CUPS_LPADMIN_PRINTER1
+            value: 'lpadmin -p second -D HL-2270Dw -m everywhere -v ipp://brn001ba97533c8.local'
         imagePullPolicy: Always
         name: airprint-bridge
         terminationMessagePath: /dev/termination-log
