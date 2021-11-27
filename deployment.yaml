@@ -4,16 +4,16 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "3"
   labels:
-    app: airprint-bridge
-  name: airprint-bridge
-  namespace: airprint-bridge
+    app: airprint
+  name: airprint
+  namespace: airprint
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: airprint-bridge
+      app: airprint
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -23,17 +23,15 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: airprint-bridge
+        app: airprint
     spec:
       containers:
-      - image: drpsychick/airprint-bridge:latest
+      - image: firilith/airprint:latest
         env:
-          - name: CUPS_HOSTNAME
-            value: 'airprint-bridge.airprint-bridge.local'
-          - name: CUPS_LPADMIN_PRINTER1
-            value: 'lpadmin -p second -D HL-2270Dw -m everywhere -v ipp://brn001ba97533c8.local'
+          - name: TZ
+            value: 'America/New_York'
         imagePullPolicy: Always
-        name: airprint-bridge
+        name: airprint
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
